@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from app.database.database_setup import engine
 from sqlmodel import Session
-from app.database.crud_operations import get_tasks, post_tasks, get_one_task, put_task, patch_task, delete_task
+from app.database.crud_operations_tasks import get_tasks, post_tasks, get_one_task, put_task, patch_task, delete_task, get_join
 from app.database.models import Task, TaskUpdate
 
 router = APIRouter(
@@ -21,8 +21,8 @@ async def get(session: Session = Depends(get_session)):
     
 @router.post("/tasks")
 async def post(task: Task, session: Session = Depends(get_session)):
-    validate = Task.model_validate(task, session)
-    return post_tasks(validate)
+    validate = Task.model_validate(task)
+    return post_tasks(validate, session)
 
 @router.get("/tasks/{task_id}")
 async def get_one(task_id: int, session: Session = Depends(get_session)):

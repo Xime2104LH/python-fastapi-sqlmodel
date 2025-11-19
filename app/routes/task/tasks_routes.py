@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from app.database.database_setup import engine
 from sqlmodel import Session
-from app.database.crud_operations_tasks import get_tasks, post_tasks, get_one_task, put_task, patch_task, delete_task, get_join
+from app.database.crud_operations_tasks import get_tasks, post_tasks, get_one_task, put_task, patch_task, delete_task
 from app.database.models import Task, TaskUpdate
 
 router = APIRouter(

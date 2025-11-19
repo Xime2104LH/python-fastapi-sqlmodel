@@ -1,6 +1,6 @@
 
 from sqlmodel import Session, select
-from app.database.models import Task, TaskUpdate, Category
+from app.database.models import Task, TaskUpdate, Category, TaskWithCategory
 
 """
 Escenario Anterior
